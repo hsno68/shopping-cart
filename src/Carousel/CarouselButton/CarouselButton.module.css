@@ -1,0 +1,36 @@
+.carouselButton {
+  width: 70px;
+  height: 70px;
+  color: #763552;
+  background-color: #d39f77;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.carouselButton:hover {
+  color: #fbefdd;
+}
+
+.left {
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.right {
+  justify-content: flex-start;
+  padding-left: 0.5rem;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.carouselButton :global(.material-symbols-rounded) {
+  font-size: 2rem;
+}

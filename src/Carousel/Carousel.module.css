@@ -1,0 +1,11 @@
+.outerContainer {
+  width: 1000px;
+  height: 500px;
+  border: 12px solid #d39f77;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}

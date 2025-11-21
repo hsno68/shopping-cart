@@ -3,7 +3,7 @@ import Nav from "./Nav/Nav.jsx";
 
 export default function App() {
   return (
-    <div>
+    <div className="app">
       <Nav />
       <Outlet />
     </div>
