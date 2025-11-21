@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { API_KEY } from "./../apiKey.js";
-import CarouselButton from "./CarouselButton/CarouselButton.jsx";
-import CarouselSlides from "./CarouselSlides/CarouselSlides.jsx";
+import Button from "./Button/Button.jsx";
+import Slides from "./Slides/Slides.jsx";
 import styles from "./Carousel.module.css";
 
 export default function Carousel() {
@@ -60,18 +60,18 @@ export default function Carousel() {
   return (
     <>
       <div className={styles.outerContainer}>
-        <CarouselButton direction="left" navigate={navigate} icon="arrow_back_ios_new" />
+        <Button direction="left" navigate={navigate} icon="arrow_back_ios_new" />
         {!images.length ? (
-          <div>Loading...</div>
+          <p>Loading...</p>
         ) : (
-          <CarouselSlides
+          <Slides
             images={images}
             currentIndex={currentIndex}
             transitionEnabled={transitionEnabled}
             handleTransitionEnd={handleTransitionEnd}
           />
         )}
-        <CarouselButton direction="right" navigate={navigate} icon="arrow_forward_ios" />
+        <Button direction="right" navigate={navigate} icon="arrow_forward_ios" />
       </div>
       {currentIndex}
     </>

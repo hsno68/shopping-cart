@@ -1,6 +1,6 @@
-import styles from "./CarouselButton.module.css";
+import styles from "./Button.module.css";
 
-export default function CarouselButton({ direction, navigate, icon }) {
+export default function Button({ direction, navigate, icon }) {
   return (
     <button
       type="button"

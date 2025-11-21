@@ -1,11 +1,6 @@
-import styles from "./CarouselSlides.module.css";
+import styles from "./Slides.module.css";
 
-export default function CarouselSlides({
-  images,
-  currentIndex,
-  transitionEnabled,
-  handleTransitionEnd,
-}) {
+export default function Slides({ images, currentIndex, transitionEnabled, handleTransitionEnd }) {
   const animationStyle = {
     transform: `translateX(-${currentIndex * 100}%)`,
     transition: transitionEnabled ? "transform 0.3s ease-in-out" : "none",
