@@ -2,14 +2,22 @@ import { useState, useEffect, useRef } from "react";
 import { API_KEY } from "./../apiKey.js";
 import Button from "./Button/Button.jsx";
 import Slides from "./Slides/Slides.jsx";
+import Nav from "./Nav/Nav.jsx";
 import styles from "./Carousel.module.css";
 
 export default function Carousel() {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(1);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
+  const isAnimatingRef = useRef(false);
 
   function navigate(direction) {
+    if (isAnimatingRef.current) {
+      return;
+    }
+
+    isAnimatingRef.current = true;
+
     const delta = direction === "left" ? -1 : 1;
     setTransitionEnabled(true);
     setCurrentIndex((prevIndex) => prevIndex + delta);
@@ -23,6 +31,8 @@ export default function Carousel() {
       }
       return prevIndex;
     });
+
+    isAnimatingRef.current = false;
   }
 
   useEffect(() => {
@@ -57,10 +67,14 @@ export default function Carousel() {
     fetchImages();
   }, []);
 
+  const slideCount = images.length - 2;
+  const navIndex = images.length > 0 ? (currentIndex - 1 + slideCount) % slideCount : 0;
+
   return (
     <>
       <div className={styles.outerContainer}>
         <Button direction="left" navigate={navigate} icon="arrow_back_ios_new" />
+        <Nav images={images} navIndex={navIndex} />
         {!images.length ? (
           <p>Loading...</p>
         ) : (

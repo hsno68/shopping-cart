@@ -1,0 +1,28 @@
+.container {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+
+.indicator {
+  width: 30px;
+  height: 30px;
+  background-color: #f1e3c3;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  position: relative;
+}
+
+.indicator.selected::after {
+  content: "";
+  background-color: #c23e31;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  inset: 10%;
+}
