@@ -1,9 +1,9 @@
 import styles from "./Nav.module.css";
 
-export default function Nav({ images, navIndex }) {
+export default function Nav({ slideCount, navIndex }) {
   const indicators = [];
 
-  for (let i = 0; i < images.length - 2; i++) {
+  for (let i = 0; i < slideCount; i++) {
     indicators.push(
       <button
         type="button"

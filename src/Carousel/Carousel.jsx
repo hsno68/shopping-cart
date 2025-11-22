@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { API_KEY } from "./../apiKey.js";
+import Nav from "./Nav/Nav.jsx";
 import Button from "./Button/Button.jsx";
 import Slides from "./Slides/Slides.jsx";
-import Nav from "./Nav/Nav.jsx";
 import styles from "./Carousel.module.css";
 
 export default function Carousel() {
@@ -19,6 +19,7 @@ export default function Carousel() {
     isAnimatingRef.current = true;
 
     const delta = direction === "left" ? -1 : 1;
+
     setTransitionEnabled(true);
     setCurrentIndex((prevIndex) => prevIndex + delta);
   }
@@ -73,8 +74,8 @@ export default function Carousel() {
   return (
     <>
       <div className={styles.outerContainer}>
+        <Nav slideCount={slideCount} navIndex={navIndex} />
         <Button direction="left" navigate={navigate} icon="arrow_back_ios_new" />
-        <Nav images={images} navIndex={navIndex} />
         {!images.length ? (
           <p>Loading...</p>
         ) : (
