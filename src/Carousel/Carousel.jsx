@@ -11,17 +11,18 @@ export default function Carousel() {
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const isAnimatingRef = useRef(false);
 
-  function navigate(direction) {
-    if (isAnimatingRef.current) {
-      return;
-    }
-
+  function navigate({ direction, index }) {
+    if (isAnimatingRef.current) return;
     isAnimatingRef.current = true;
-
-    const delta = direction === "left" ? -1 : 1;
-
     setTransitionEnabled(true);
-    setCurrentIndex((prevIndex) => prevIndex + delta);
+
+    setCurrentIndex((prev) => {
+      if (direction) {
+        return prev + (direction === "left" ? -1 : 1);
+      } else {
+        return index + 1;
+      }
+    });
   }
 
   function handleTransitionEnd() {
@@ -72,23 +73,20 @@ export default function Carousel() {
   const navIndex = images.length > 0 ? (currentIndex - 1 + slideCount) % slideCount : 0;
 
   return (
-    <>
-      <div className={styles.outerContainer}>
-        <Nav slideCount={slideCount} navIndex={navIndex} />
-        <Button direction="left" navigate={navigate} icon="arrow_back_ios_new" />
-        {!images.length ? (
-          <p>Loading...</p>
-        ) : (
-          <Slides
-            images={images}
-            currentIndex={currentIndex}
-            transitionEnabled={transitionEnabled}
-            handleTransitionEnd={handleTransitionEnd}
-          />
-        )}
-        <Button direction="right" navigate={navigate} icon="arrow_forward_ios" />
-      </div>
-      {currentIndex}
-    </>
+    <div className={styles.outerContainer}>
+      <Nav slideCount={slideCount} navIndex={navIndex} navigate={navigate} />
+      <Button direction="left" navigate={navigate} icon="arrow_back_ios_new" />
+      {!images.length ? (
+        <p>Loading...</p>
+      ) : (
+        <Slides
+          images={images}
+          currentIndex={currentIndex}
+          transitionEnabled={transitionEnabled}
+          handleTransitionEnd={handleTransitionEnd}
+        />
+      )}
+      <Button direction="right" navigate={navigate} icon="arrow_forward_ios" />
+    </div>
   );
 }

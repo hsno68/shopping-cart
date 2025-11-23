@@ -6,9 +6,9 @@ export default function Button({ direction, navigate, icon }) {
       type="button"
       aria-label={direction === "left" ? "Previous slide" : "Next slide"}
       className={`${styles.carouselButton} ${styles[direction]}`}
-      onClick={() => navigate(direction)}
+      onClick={() => navigate({ direction })}
     >
-      <span className="material-symbols-rounded" aria-hidden="true">
+      <span aria-hidden="true" className="material-symbols-rounded">
         {icon}
       </span>
     </button>
