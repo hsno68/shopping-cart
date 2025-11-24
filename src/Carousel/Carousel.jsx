@@ -16,13 +16,11 @@ export default function Carousel() {
     isAnimatingRef.current = true;
     setTransitionEnabled(true);
 
-    setCurrentIndex((prev) => {
-      if (direction) {
-        return prev + (direction === "left" ? -1 : 1);
-      } else {
-        return index + 1;
-      }
-    });
+    if (direction) {
+      setCurrentIndex((prevIndex) => prevIndex + (direction === "left" ? -1 : 1));
+    } else {
+      setCurrentIndex(index + 1);
+    }
   }
 
   function handleTransitionEnd() {
