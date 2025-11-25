@@ -1,10 +1,10 @@
 import styles from "./Nav.module.css";
 
 export default function Nav({ slidesCount, navIndex, navigate }) {
-  const indicators = [];
+  const navButtons = [];
 
   for (let i = 0; i < slidesCount; i++) {
-    indicators.push(
+    navButtons.push(
       <button
         key={i}
         type="button"
@@ -14,5 +14,5 @@ export default function Nav({ slidesCount, navIndex, navigate }) {
     );
   }
 
-  return <div className={styles.container}>{indicators}</div>;
+  return <div className={styles.container}>{navButtons}</div>;
 }
