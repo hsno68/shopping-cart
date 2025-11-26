@@ -1,0 +1,27 @@
+.outerContainer {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid red;
+}
+
+.innerContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.button {
+  min-width: 0;
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #212121;
+  background-color: #e4e4e4;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
