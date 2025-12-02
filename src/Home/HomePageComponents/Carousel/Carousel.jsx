@@ -7,7 +7,7 @@ import Slides from "./CarouselComponents/Slides/Slides.jsx";
 import styles from "./Carousel.module.css";
 
 export default function Carousel() {
-  const [cachedImages, setCachedImages] = useOutletContext();
+  const { carouselImages, setCarouselImages } = useOutletContext();
   const [currentIndex, setCurrentIndex] = useState(1);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const isAnimatingRef = useRef(false);
@@ -26,9 +26,9 @@ export default function Carousel() {
 
   function handleTransitionEnd() {
     setCurrentIndex((prevIndex) => {
-      if (prevIndex === 0 || prevIndex === cachedImages.length - 1) {
+      if (prevIndex === 0 || prevIndex === carouselImages.length - 1) {
         setTransitionEnabled(false);
-        return prevIndex === 0 ? cachedImages.length - 2 : 1;
+        return prevIndex === 0 ? carouselImages.length - 2 : 1;
       }
       return prevIndex;
     });
@@ -37,7 +37,7 @@ export default function Carousel() {
   }
 
   useEffect(() => {
-    if (cachedImages.length > 0) {
+    if (carouselImages.length > 0) {
       return;
     }
 
@@ -63,7 +63,7 @@ export default function Carousel() {
         const last = sources[sources.length - 1];
         const loopedSources = [last, ...sources, first];
 
-        setCachedImages(loopedSources);
+        setCarouselImages(loopedSources);
       } catch (error) {
         console.error("Error fetching images:", error);
       }
@@ -72,19 +72,19 @@ export default function Carousel() {
     fetchImages();
   }, []);
 
-  const fetchedImages = cachedImages.length > 0;
-  const slidesCount = fetchedImages ? cachedImages.length - 2 : 0;
+  const fetchedImages = carouselImages.length > 0;
+  const slidesCount = fetchedImages ? carouselImages.length - 2 : 0;
   const navIndex = fetchedImages ? (currentIndex - 1 + slidesCount) % slidesCount : 0;
 
   return (
     <div className={styles.container}>
       <Nav slidesCount={slidesCount} navIndex={navIndex} navigate={navigate} />
       <Button direction="left" icon="arrow_back_ios_new" navigate={navigate} />
-      {!cachedImages.length ? (
+      {!carouselImages.length ? (
         <p>Loading...</p>
       ) : (
         <Slides
-          images={cachedImages}
+          images={carouselImages}
           currentIndex={currentIndex}
           transitionEnabled={transitionEnabled}
           handleTransitionEnd={handleTransitionEnd}
