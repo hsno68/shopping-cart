@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useOutletContext } from "react-router-dom";
 import { API_KEY } from "../../../../apiKey.js";
-import Nav from "./Components/Nav/Nav.jsx";
-import Button from "./Components/Button/Button.jsx";
-import Slides from "./Components/Slides/Slides.jsx";
+import Nav from "./CarouselComponents/Nav/Nav.jsx";
+import Button from "./CarouselComponents/Button/Button.jsx";
+import Slides from "./CarouselComponents/Slides/Slides.jsx";
 import styles from "./Carousel.module.css";
 
 export default function Carousel() {
