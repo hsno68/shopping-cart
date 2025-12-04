@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Card from "./Card/Card.jsx";
-import layout from "./../../Shop.module.css";
 import styles from "./Products.module.css";
 
 export default function Products() {
@@ -29,7 +28,7 @@ export default function Products() {
   }, []);
 
   return (
-    <div className={layout.container}>
+    <div className={styles.container}>
       <h2>Products</h2>
       {!products.length ? (
         <p>"Loading..."</p>

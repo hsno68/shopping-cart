@@ -1,11 +1,10 @@
-import layout from "./../../Home.module.css";
 import styles from "./Categories.module.css";
 
 export default function Categories() {
   return (
-    <div className={layout.container}>
+    <div className={styles.container}>
       <h2>Featured Categories</h2>
-      <ul className={layout.gridContainer}>
+      <ul className={styles.gridContainer}>
         <li>
           <a href="#" className={styles.button}>
             Electronics

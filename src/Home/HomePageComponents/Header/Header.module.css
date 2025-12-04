@@ -1,4 +1,17 @@
+.container {
+  text-align: center;
+}
+
+.container > * + * {
+  margin-top: 1rem;
+}
+
 .button {
-  composes: button from "./../../Home.module.css";
   display: inline-block;
+  padding: 1rem;
+  color: var(--color-contrast);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }

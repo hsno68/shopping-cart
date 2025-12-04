@@ -1,5 +1,4 @@
 import Card from "./Card/Card.jsx";
-import layout from "./../../Home.module.css";
 import styles from "./Products.module.css";
 
 export default function Products() {
@@ -10,7 +9,7 @@ export default function Products() {
   }
 
   return (
-    <div className={layout.container}>
+    <div className={styles.container}>
       <h2>Featured Products</h2>
       <ul className={styles.gridContainer}>{cards}</ul>
     </div>
