@@ -4,11 +4,9 @@ import styles from "./Search.module.css";
 export default function Search() {
   const [value, setValue] = useState("");
 
-  function handleChange() {}
+  function handleChange(e) {
+    setValue(e.target.value);
+  }
 
-  return (
-    <div className={styles.container}>
-      <input type="text" className={styles.input}></input>
-    </div>
-  );
+  return <input type="text" value={value} onChange={handleChange} className={styles.input}></input>;
 }
