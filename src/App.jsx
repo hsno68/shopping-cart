@@ -4,12 +4,12 @@ import Nav from "./Nav/Nav.jsx";
 
 export default function App() {
   const [carouselImages, setCarouselImages] = useState([]);
-  const [productsList, setProductsList] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   return (
     <div className="app">
       <Nav />
-      <Outlet context={{ carouselImages, setCarouselImages, productsList, setProductsList }} />
+      <Outlet context={{ carouselImages, setCarouselImages, cartItems, setCartItems }} />
     </div>
   );
 }
