@@ -5,3 +5,7 @@
 .container > * + * {
   margin-top: 1rem;
 }
+
+.flexContainer {
+  display: flex;
+}
