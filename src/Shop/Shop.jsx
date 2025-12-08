@@ -1,6 +1,7 @@
 import Search from "./ShopPageComponents/Search/Search.jsx";
 import Filters from "./ShopPageComponents/Filters/Filters.jsx";
 import Products from "./ShopPageComponents/Products/Products.jsx";
+import Categories from "./ShopPageComponents/Categories/Categories.jsx";
 import styles from "./Shop.module.css";
 
 export default function Shop() {
@@ -11,7 +12,10 @@ export default function Shop() {
         <Search />
         <Filters />
       </div>
-      <Products />
+      <div className={styles.flexContainer}>
+        <Categories />
+        <Products />
+      </div>
     </div>
   );
 }
