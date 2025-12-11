@@ -7,6 +7,49 @@ export default function App() {
   const [categories, setCategories] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
+  const [filters, setFilters] = useState({ mainCategories: [], subCategories: {} });
+
+  function toggleMainCategory({ mainCategory }) {
+    setFilters((prevFilters) => {
+      const prevMainCategories = prevFilters.mainCategories;
+      let newListofMainCategories = [];
+
+      if (!prevMainCategories.includes(mainCategory)) {
+        newListofMainCategories = [...prevMainCategories, mainCategory];
+      } else {
+        newListofMainCategories = prevMainCategories.filter(
+          (category) => category !== mainCategory
+        );
+      }
+
+      return { ...prevFilters, mainCategories: newListofMainCategories };
+    });
+  }
+
+  function toggleSubcategoryFilter({ mainCategory, subCategory }) {
+    setFilters((prevFilters) => {
+      const prevSubcategories = prevFilters.subCategories;
+
+      if (!prevSubcategories.hasOwnProperty(mainCategory)) {
+        return {
+          ...prevFilters,
+          subCategories: { ...prevSubcategories, [mainCategory]: [subCategory] },
+        };
+      }
+
+      const listOfSubcategories = prevSubcategories[mainCategory];
+      let newListOfSubcategories = [];
+
+      if (listOfSubcategories.includes(subCategory)) {
+        newListOfSubcategories = listOfSubcategories.filter((category) => category !== subCategory);
+      } else {
+        newListOfSubcategories = [...listOfSubcategories, subCategory];
+      }
+
+      return { ...prevFilters, subCategories: { [mainCategory]: newListOfSubcategories } };
+    });
+  }
+
   return (
     <div className="app">
       <Nav />
@@ -18,6 +61,9 @@ export default function App() {
           setCategories,
           cartItems,
           setCartItems,
+          filters,
+          toggleMainCategory,
+          toggleSubcategoryFilter,
         }}
       />
     </div>

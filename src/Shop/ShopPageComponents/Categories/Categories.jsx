@@ -4,7 +4,7 @@ import Subcategories from "./Subcategories/Subcategories.jsx";
 import styles from "./Categories.module.css";
 
 export default function Categories() {
-  const { categories, setCategories } = useOutletContext();
+  const { categories, setCategories, filters, toggleMainCategory } = useOutletContext();
 
   useEffect(() => {
     if (Object.keys(categories).length > 0) {
@@ -24,13 +24,13 @@ export default function Categories() {
         const categoriesList = await response.json();
 
         const groupedCategories = categoriesList.reduce((accumulator, category) => {
-          const generalizedCategory = groupCategories(category);
+          const mainCategory = groupCategories(category);
 
-          if (!accumulator.hasOwnProperty(generalizedCategory)) {
-            accumulator[generalizedCategory] = [];
+          if (!accumulator.hasOwnProperty(mainCategory)) {
+            accumulator[mainCategory] = [];
           }
 
-          accumulator[generalizedCategory].push(formatCategory(category));
+          accumulator[mainCategory].push(formatCategory(category));
           return accumulator;
         }, {});
 
@@ -44,11 +44,15 @@ export default function Categories() {
   }, []);
 
   return (
-    <ul>
-      {Object.entries(categories).map(([generalCategory, subCategories]) => (
-        <li key={generalCategory}>
-          {generalCategory}
-          <Subcategories items={subCategories} />
+    <ul className={styles.container}>
+      {Object.entries(categories).map(([mainCategory, subCategories]) => (
+        <li key={mainCategory}>
+          <h2 onClick={() => toggleMainCategory({ mainCategory })}>{mainCategory}</h2>
+          {filters.mainCategories.includes(mainCategory) ? (
+            <Subcategories mainCategory={mainCategory} items={subCategories} />
+          ) : (
+            false
+          )}
         </li>
       ))}
     </ul>
