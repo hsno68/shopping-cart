@@ -1,5 +1,6 @@
 .container {
-  width: 1000px;
+  margin: 0 auto;
+  width: clamp(300px, 80%, 1000px);
   height: 300px;
   border: 10px solid #d39f77;
   border-radius: 8px;

@@ -5,3 +5,7 @@
 .flexContainer {
   display: flex;
 }
+
+.content {
+  gap: 2rem;
+}

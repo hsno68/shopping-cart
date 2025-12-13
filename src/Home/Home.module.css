@@ -1,23 +1,9 @@
 .container {
-  text-align: center;
+  margin: 0 auto;
+  width: clamp(320px, 90vw, 1600px);
+  container-type: inline-size;
 }
 
 .container > * + * {
   margin-top: 1rem;
-}
-
-.gridContainer {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  gap: 1rem;
-}
-
-.button {
-  padding: 1rem;
-  color: var(--color-contrast);
-  background-color: var(--color-primary);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
 }

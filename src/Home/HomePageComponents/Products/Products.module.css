@@ -8,8 +8,19 @@
 
 .gridContainer {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   justify-items: center;
   gap: 1rem;
+}
+
+@container (max-width: 900px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@container (max-width: 480px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
 }
