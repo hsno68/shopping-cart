@@ -4,12 +4,14 @@ import Nav from "./Nav/Nav.jsx";
 
 export default function App() {
   const [carouselImages, setCarouselImages] = useState([]);
-  const [categories, setCategories] = useState({});
-  const [cartItems, setCartItems] = useState([]);
 
+  const [categories, setCategories] = useState({});
+  const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({ mainCategories: [], subCategories: {} });
 
-  function toggleMainCategory({ mainCategory }) {
+  const [cartItems, setCartItems] = useState([]);
+
+  function toggleMainCategoryFilter({ mainCategory }) {
     setFilters((prevFilters) => {
       const prevMainCategories = prevFilters.mainCategories;
       let newListofMainCategories = [];
@@ -53,6 +55,10 @@ export default function App() {
     });
   }
 
+  function clearFilters() {
+    setFilters((prevFilters) => ({ ...prevFilters, subCategories: [] }));
+  }
+
   return (
     <div className="app">
       <Nav />
@@ -62,11 +68,14 @@ export default function App() {
           setCarouselImages,
           categories,
           setCategories,
+          products,
+          setProducts,
           cartItems,
           setCartItems,
           filters,
-          toggleMainCategory,
+          toggleMainCategoryFilter,
           toggleSubcategoryFilter,
+          clearFilters,
         }}
       />
     </div>

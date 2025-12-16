@@ -80,15 +80,15 @@ export default function Carousel() {
     <div className={styles.container}>
       <Nav slidesCount={slidesCount} navIndex={navIndex} navigate={navigate} />
       <Button direction="left" icon="arrow_back_ios_new" navigate={navigate} />
-      {!carouselImages.length ? (
-        <p>Loading...</p>
-      ) : (
+      {carouselImages.length > 0 ? (
         <Slides
           images={carouselImages}
           currentIndex={currentIndex}
           transitionEnabled={transitionEnabled}
           handleTransitionEnd={handleTransitionEnd}
         />
+      ) : (
+        <p>Loading...</p>
       )}
       <Button direction="right" icon="arrow_forward_ios" navigate={navigate} />
     </div>
