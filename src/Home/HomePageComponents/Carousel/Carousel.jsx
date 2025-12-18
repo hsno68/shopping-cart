@@ -8,29 +8,34 @@ import styles from "./Carousel.module.css";
 
 export default function Carousel() {
   const { carouselImages, setCarouselImages } = useOutletContext();
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const isAnimatingRef = useRef(false);
 
   function navigate({ direction, index }) {
-    if (isAnimatingRef.current) return;
+    if (isAnimatingRef.current) {
+      return;
+    }
+
     isAnimatingRef.current = true;
     setTransitionEnabled(true);
 
     if (direction) {
       setCurrentIndex((prevIndex) => prevIndex + (direction === "left" ? -1 : 1));
     } else {
-      setCurrentIndex(index + 1);
+      setCurrentIndex(index);
     }
   }
 
   function handleTransitionEnd() {
     setCurrentIndex((prevIndex) => {
-      if (prevIndex === 0 || prevIndex === carouselImages.length - 1) {
+      const nextIndex = getIndex({ index: prevIndex, images: carouselImages });
+
+      if (prevIndex !== nextIndex) {
         setTransitionEnabled(false);
-        return prevIndex === 0 ? carouselImages.length - 2 : 1;
       }
-      return prevIndex;
+
+      return nextIndex;
     });
 
     isAnimatingRef.current = false;
@@ -59,11 +64,8 @@ export default function Carousel() {
           src: media.src.landscape,
           alt: media.alt,
         }));
-        const first = sources[0];
-        const last = sources[sources.length - 1];
-        const loopedSources = [last, ...sources, first];
 
-        setCarouselImages(loopedSources);
+        setCarouselImages(sources);
       } catch (error) {
         console.error("Error fetching images:", error);
       }
@@ -72,25 +74,57 @@ export default function Carousel() {
     fetchImages();
   }, []);
 
-  const fetchedImages = carouselImages.length > 0;
-  const slidesCount = fetchedImages ? carouselImages.length - 2 : 0;
-  const navIndex = fetchedImages ? (currentIndex - 1 + slidesCount) % slidesCount : 0;
-
   return (
     <div className={styles.container}>
-      <Nav slidesCount={slidesCount} navIndex={navIndex} navigate={navigate} />
+      <Nav
+        carouselImages={carouselImages}
+        navIndex={getIndex({ index: currentIndex, images: carouselImages })}
+        navigate={navigate}
+      />
       <Button direction="left" icon="arrow_back_ios_new" navigate={navigate} />
-      {carouselImages.length > 0 ? (
+      {carouselImages.length === 0 ? (
+        <p>Loading...</p>
+      ) : (
         <Slides
-          images={carouselImages}
-          currentIndex={currentIndex}
-          transitionEnabled={transitionEnabled}
+          images={createLoopedCarousel(carouselImages)}
+          animationStyle={createAnimationStyle({
+            index: currentIndex,
+            canTransition: transitionEnabled,
+          })}
           handleTransitionEnd={handleTransitionEnd}
         />
-      ) : (
-        <p>Loading...</p>
       )}
       <Button direction="right" icon="arrow_forward_ios" navigate={navigate} />
     </div>
   );
+}
+
+function getIndex({ index, images }) {
+  if (index === -1) {
+    return images.length - 1;
+  }
+
+  if (index === images.length) {
+    return 0;
+  }
+
+  return index;
+}
+
+function createLoopedCarousel(images) {
+  if (images.length === 0) {
+    return [];
+  }
+
+  return [images[images.length - 1], ...images, images[0]];
+}
+
+function createAnimationStyle({ index, canTransition }) {
+  const offset = index + 1;
+  const transition = canTransition ? "transform 0.3s ease-in-out" : "none";
+
+  return {
+    transform: `translateX(-${offset * 100}%)`,
+    transition: transition,
+  };
 }
