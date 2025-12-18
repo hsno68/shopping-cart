@@ -5,6 +5,7 @@ import Nav from "./Nav/Nav.jsx";
 export default function App() {
   const [carouselImages, setCarouselImages] = useState([]);
 
+  const [searchValue, setSearchValue] = useState("");
   const [categories, setCategories] = useState({});
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({ mainCategories: [], subCategories: {} });
@@ -66,6 +67,8 @@ export default function App() {
         context={{
           carouselImages,
           setCarouselImages,
+          searchValue,
+          setSearchValue,
           categories,
           setCategories,
           products,

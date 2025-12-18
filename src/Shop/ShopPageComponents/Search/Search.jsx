@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import styles from "./Search.module.css";
 
 export default function Search() {
-  const [value, setValue] = useState("");
+  const { searchValue, setSearchValue } = useOutletContext();
 
-  function handleChange(e) {
-    setValue(e.target.value);
-  }
-
-  return <input type="text" value={value} onChange={handleChange} className={styles.input}></input>;
+  return (
+    <input
+      type="text"
+      value={searchValue}
+      onChange={(e) => setSearchValue(e.target.value)}
+      className={styles.input}
+    ></input>
+  );
 }
