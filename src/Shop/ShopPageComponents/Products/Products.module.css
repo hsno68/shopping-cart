@@ -11,7 +11,7 @@
 .gridContainer {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
   gap: 2rem;
 }
 

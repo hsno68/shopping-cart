@@ -1,7 +1,6 @@
 import styles from "./Card.module.css";
 
-export default function Card({ product }) {
-  const { title, thumbnail, price } = product;
+export default function Card({ title, thumbnail, price }) {
   return (
     <div className={styles.gridContainer}>
       <div className={styles.imageWrapper}>
