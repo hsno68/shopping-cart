@@ -1,6 +1,6 @@
 .container {
   margin: 0 auto;
-  width: clamp(320px, 90vw, 1600px);
+  width: clamp(520px, 90vw, 1600px);
   container-type: inline-size;
 }
 
@@ -8,6 +8,16 @@
   margin-top: 1rem;
 }
 
+.gridContainer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  row-gap: 1rem;
+}
+
 .flexContainer {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }

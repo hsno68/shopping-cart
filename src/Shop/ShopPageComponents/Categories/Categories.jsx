@@ -46,7 +46,9 @@ export default function Categories() {
 
   return (
     <ul className={styles.container}>
-      <h2 onClick={clearFilters}>Clear Filters</h2>
+      <li>
+        <h2 onClick={clearFilters}>Clear Filters</h2>
+      </li>
       {Object.entries(categories).map(([mainCategory, subCategories]) => (
         <li key={mainCategory}>
           <h2 onClick={() => toggleMainCategoryFilter({ mainCategory })}>{mainCategory}</h2>

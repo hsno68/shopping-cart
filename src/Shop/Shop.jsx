@@ -1,18 +1,19 @@
 import Search from "./ShopPageComponents/Search/Search.jsx";
-import Filters from "./ShopPageComponents/Filters/Filters.jsx";
-import Products from "./ShopPageComponents/Products/Products.jsx";
 import Categories from "./ShopPageComponents/Categories/Categories.jsx";
+import Products from "./ShopPageComponents/Products/Products.jsx";
+import Filters from "./ShopPageComponents/Filters/Filters.jsx";
 import styles from "./Shop.module.css";
 
 export default function Shop() {
   return (
     <div className={styles.container}>
-      <div className={styles.flexContainer}>
-        <Search />
-        <Filters />
-      </div>
-      <div className={styles.flexContainer}>
+      <Search />
+      <div className={styles.gridContainer}>
         <Categories />
+        <div className={styles.flexContainer}>
+          <h1>Products</h1>
+          <Filters />
+        </div>
         <Products />
       </div>
     </div>

@@ -105,7 +105,6 @@ export default function Products() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Products</h1>
       {subCategories.length === 0 && searchProducts.length === 0 ? (
         <h2>Choose a category or search to view products.</h2>
       ) : (
