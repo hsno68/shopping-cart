@@ -4,7 +4,7 @@ import Card from "./Card/Card.jsx";
 import styles from "./Products.module.css";
 
 export default function Products() {
-  const { products, setProducts, filters, searchValue } = useOutletContext();
+  const { products, setProducts, filters, searchValue, sortValue } = useOutletContext();
   const [searchProducts, setSearchProducts] = useState([]);
 
   const cachedSubcategories = Object.keys(products);
@@ -30,6 +30,8 @@ export default function Products() {
         }
 
         const data = await response.json();
+
+        console.log(data.products[1]);
 
         setProducts((prevProducts) => ({ ...prevProducts, [subCategory]: data.products }));
       } catch (error) {

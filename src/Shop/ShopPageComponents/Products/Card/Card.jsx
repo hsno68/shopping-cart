@@ -7,7 +7,7 @@ export default function Card({ title, thumbnail, price }) {
         <img src={thumbnail} alt={title} className={styles.image} />
       </div>
       <p>{title}</p>
-      <p>{price}</p>
+      <p>{`$${price}`}</p>
     </div>
   );
 }
