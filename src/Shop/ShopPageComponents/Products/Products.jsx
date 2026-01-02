@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
-import Card from "./Card/Card.jsx";
+import Card from "./../../../Card/Card.jsx";
 import styles from "./Products.module.css";
 
 export default function Products() {
@@ -112,7 +112,7 @@ export default function Products() {
       ) : (
         <ul className={styles.gridContainer}>
           {getListOfProducts().map(({ id, title, thumbnail, price }) => (
-            <Card key={id} title={title} thumbnail={thumbnail} price={price} />
+            <Card key={id} title={title} thumbnail={thumbnail} price={price} context={"shop"} />
           ))}
         </ul>
       )}
