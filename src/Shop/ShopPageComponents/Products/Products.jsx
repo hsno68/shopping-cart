@@ -22,17 +22,29 @@ export default function Products() {
 
     async function fetchProducts() {
       try {
-        const response = await fetch(`https://dummyjson.com/products/category/${subCategory}`, {
-          mode: "cors",
+        const data = await Promise.all(
+          newSubcategories.map(async (subCategory) => {
+            const response = await fetch(`https://dummyjson.com/products/category/${subCategory}`, {
+              mode: "cors",
+            });
+            if (!response.ok) {
+              throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            const json = await response.json();
+            return { subCategory, products: json.products };
+          })
+        );
+
+        setProducts((prevProducts) => {
+          const newListOfProducts = data.reduce((accumulator, current) => {
+            const category = current.subCategory;
+            const products = current.products;
+            accumulator[category] = products;
+            return accumulator;
+          }, {});
+
+          return { ...prevProducts, ...newListOfProducts };
         });
-
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-
-        const data = await response.json();
-
-        setProducts((prevProducts) => ({ ...prevProducts, [subCategory]: data.products }));
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -125,4 +137,18 @@ export default function Products() {
     smartphones: [...]
   }
 
+*/
+
+/* Example fetched data return
+[
+  {
+    subCategory: "laptops",
+    products: [...]
+  },
+
+  {
+    subCategory: "phones",
+    products: [...]
+  },
+]
 */
