@@ -91,3 +91,14 @@ export default function App() {
     </div>
   );
 }
+
+/* Example filters structure
+
+  filters = {
+    mainCategories: ["Electronics", "Apparel"],
+    subCategories: {
+      Electronics: ["laptops", "smartphones"],
+      Apparel: ["mens-shirts", "womens-dresses"]
+    }
+
+*/

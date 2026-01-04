@@ -120,3 +120,12 @@ export default function Products() {
     </div>
   );
 }
+
+/* Example products structure
+
+  products = {
+    laptops: [...],
+    smartphones: [...]
+  }
+
+*/

@@ -107,3 +107,18 @@ function groupCategories(category) {
 
   return "Other";
 }
+
+/* Categories structure
+
+  categories = {
+    Accessories: ["mens-watches", "sunglasses", "womens-jewellery", "womens-watches"],
+    Apparel: ["mens-shirts", "mens-shoes", "tops", "womens-bags", "womens-dresses", "womens-shoes"],
+    Beauty: ["beauty", "fragrances", "skin-care"],
+    Electronics: ["laptops", "mobile-accessories", "smartphones", "tablets"],
+    Groceries: ["groceries"],
+    Home: ["furniture", "home-decoration", "kitchen-accessories"],
+    Sports: ["motorcycle", "sports-accessories", "vehicle"],
+    Other: [] // any category not matched by groupCategories
+  }
+
+*/
