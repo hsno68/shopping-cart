@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom";
-import styles from "./Filters.module.css";
+import styles from "./Sort.module.css";
 
-export default function Filters() {
+export default function Sort() {
   const { sortValue, setSortValue } = useOutletContext();
 
   return (

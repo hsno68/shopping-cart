@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.container > * + * {
-  margin-top: 1rem;
-}
-
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));

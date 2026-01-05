@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.container > * + * {
-  margin-top: 1rem;
-}
-
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -14,8 +10,7 @@
 }
 
 .button {
-  display: block;
-  width: clamp(120px, 20vw, 200px);
+  width: 200px;
   padding: 1rem;
   color: var(--color-contrast);
   background-color: var(--color-primary);

@@ -4,15 +4,10 @@
   container-type: inline-size;
 }
 
-.container > * + * {
-  margin-top: 1rem;
-}
-
 .gridContainer {
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr;
-  row-gap: 1rem;
+  grid-template-rows: auto auto 1fr;
 }
 
 .flexContainer {
