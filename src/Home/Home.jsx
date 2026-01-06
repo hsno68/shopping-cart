@@ -1,7 +1,7 @@
 import Header from "./HomePageComponents/Header/Header.jsx";
 import Carousel from "./HomePageComponents/Carousel/Carousel.jsx";
 import Categories from "./HomePageComponents/Categories/Categories.jsx";
-import Products from "./HomePageComponents/Products/Products.jsx";
+import Highlights from "./HomePageComponents/Highlights/Highlights.jsx";
 import styles from "./Home.module.css";
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       <Header />
       <Carousel />
       <Categories />
-      <Products />
+      <Highlights />
     </div>
   );
 }

@@ -1,10 +1,8 @@
 import styles from "./Card.module.css";
 
-export default function Card({ title, thumbnail, price, context }) {
+export default function Card({ title, thumbnail, price }) {
   return (
-    <li
-      className={`${styles.gridContainer} ${context === "home" ? styles.homeCard : styles.shopCard}`}
-    >
+    <li className={styles.gridContainer}>
       <div className={styles.imageWrapper}>
         <img src={thumbnail} alt={title} className={styles.image} />
       </div>

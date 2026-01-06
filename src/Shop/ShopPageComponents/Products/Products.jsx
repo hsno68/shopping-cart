@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
-import Card from "./../../../Card/Card.jsx";
+import Card from "./Card/Card.jsx";
 import styles from "./Products.module.css";
 
 export default function Products() {
