@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import Card from "./Card/Card.jsx";
+import Modal from "./Modal/Modal.jsx";
 import styles from "./Products.module.css";
 
 export default function Products() {
   const { products, setProducts, filters, searchValue, sortValue } = useOutletContext();
+  const [activeProduct, setActiveProduct] = useState(null);
   const [searchProducts, setSearchProducts] = useState([]);
 
   const subCategories = Object.values(filters.subCategories).flat();
@@ -143,11 +145,25 @@ export default function Products() {
         <h2>Choose a category or search to view products.</h2>
       ) : (
         <ul className={styles.gridContainer}>
-          {getListOfProducts().map(({ id, title, thumbnail, price }) => (
-            <Card key={id} title={title} thumbnail={thumbnail} price={price} context={"shop"} />
-          ))}
+          {getListOfProducts().map((product) => {
+            const { id, title, thumbnail, price } = product;
+
+            return (
+              <Card
+                key={id}
+                title={title}
+                thumbnail={thumbnail}
+                price={price}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveProduct(product);
+                }}
+              />
+            );
+          })}
         </ul>
       )}
+      {activeProduct && <Modal product={activeProduct} closeModal={() => setActiveProduct(null)} />}
     </div>
   );
 }

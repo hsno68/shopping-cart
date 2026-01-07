@@ -15,12 +15,15 @@ export default function Tags() {
             {`${mainCategory} > ${formatCategory(subCategory)}`}
             <button
               type="button"
+              aria-label="Remove category"
               className={styles.button}
               onClick={() => {
                 toggleSubcategoryFilter({ mainCategory, subCategory });
               }}
             >
-              X
+              <span aria-hidden="true" className="material-symbols-rounded">
+                close
+              </span>
             </button>
           </li>
         ))

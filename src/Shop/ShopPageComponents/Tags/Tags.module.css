@@ -8,7 +8,7 @@
   padding: 4px 10px;
   font-size: 0.875rem;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.25rem;
   border: 1px solid var(--color-primary);
   border-radius: 12px;
@@ -35,4 +35,8 @@
 .button:hover {
   background-color: #424242;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.button :global(.material-symbols-rounded) {
+  font-size: 1rem;
 }
