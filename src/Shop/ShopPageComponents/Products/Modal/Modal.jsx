@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Review from "./Review/Review.jsx";
 import styles from "./Modal.module.css";
 
@@ -6,6 +6,19 @@ export default function Modal({ product, closeModal }) {
   const { title, description, price, images, rating, reviews, availabilityStatus, sku } = product;
 
   const [currentImage, setCurrentImage] = useState(images[0]);
+  const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
     <div className={styles.overlay} onClick={closeModal}>
@@ -56,7 +69,12 @@ export default function Modal({ product, closeModal }) {
         <p>{description}</p>
         <p>{availabilityStatus}</p>
         <div>
-          <input type="number" min={1} />
+          <input
+            type="number"
+            min={1}
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+          />
           <button type="button">Add to Cart</button>
         </div>
         <h3>Reviews</h3>
