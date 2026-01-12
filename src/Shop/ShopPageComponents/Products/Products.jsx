@@ -65,6 +65,7 @@ export default function Products() {
     const search = searchValue.trim();
 
     if (subCategories.length || !search) {
+      setSearchProducts([]);
       return;
     }
 
@@ -74,7 +75,7 @@ export default function Products() {
       async function fetchProducts() {
         try {
           const response = await fetch(
-            `https://dummyjson.com/products/search?q=${encodeURIComponent(search)}`,
+            `https://dummyjson.com/products/search?q=${encodeURIComponent(search)}&limit=0`,
             {
               mode: "cors",
               signal: controller.signal,
@@ -116,7 +117,7 @@ export default function Products() {
       productsList = sortProducts(productsList);
     }
 
-    if (normalizeSearch) {
+    if (normalizeSearch && subCategories.length) {
       return productsList.filter((product) => {
         const title = product.title.toLowerCase();
         const tags = product.tags.map((tag) => tag.toLowerCase());
