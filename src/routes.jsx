@@ -3,7 +3,7 @@ import App from "./App.jsx";
 import Error from "./Error/Error.jsx";
 import Home from "./Home/Home.jsx";
 import Shop from "./Shop/Shop.jsx";
-import Cart from "./Cart.jsx";
+import Cart from "./Cart/Cart.jsx";
 
 const routes = [
   {

@@ -1,8 +1,8 @@
 import Search from "./ShopPageComponents/Search/Search.jsx";
 import Categories from "./ShopPageComponents/Categories/Categories.jsx";
-import Products from "./ShopPageComponents/Products/Products.jsx";
-import Tags from "./ShopPageComponents/Tags/Tags.jsx";
 import Sort from "./ShopPageComponents/Sort/Sort.jsx";
+import Tags from "./ShopPageComponents/Tags/Tags.jsx";
+import Products from "./ShopPageComponents/Products/Products.jsx";
 import styles from "./Shop.module.css";
 
 export default function Shop() {
