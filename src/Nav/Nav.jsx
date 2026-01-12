@@ -11,12 +11,12 @@ export default function Nav({ cart }) {
         Shop
       </Link>
       <Link to="/cart" className="link">
-        Cart {`(${getCartItemCount({ cart })})`}
+        Cart {`(${getCartItemsCount({ cart })})`}
       </Link>
     </div>
   );
 }
 
-function getCartItemCount({ cart }) {
+function getCartItemsCount({ cart }) {
   return Object.values(cart).reduce((total, current) => (total += current.quantity), 0);
 }

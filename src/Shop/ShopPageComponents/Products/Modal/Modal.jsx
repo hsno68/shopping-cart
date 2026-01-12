@@ -20,20 +20,20 @@ export default function Modal({ product, closeModal }) {
   const [currentImage, setCurrentImage] = useState(images[0]);
   const [quantity, setQuantity] = useState(1);
 
-  const { setCartItems } = useOutletContext();
+  const { setCart } = useOutletContext();
 
   function addToCart() {
-    setCartItems((prevCartItems) => {
-      if (!Object.hasOwn(prevCartItems, id)) {
+    setCart((prevCart) => {
+      if (!Object.hasOwn(prevCart, id)) {
         return {
-          ...prevCartItems,
+          ...prevCart,
           [id]: { category, quantity },
         };
       }
 
       return {
-        ...prevCartItems,
-        [id]: { ...prevCartItems[id], quantity: prevCartItems[id].quantity + quantity },
+        ...prevCart,
+        [id]: { ...prevCart[id], quantity: prevCart[id].quantity + quantity },
       };
     });
 
@@ -131,7 +131,7 @@ export default function Modal({ product, closeModal }) {
 
 /* Example cart structure
 
-cartItems = {
+cart = {
   1: {category: "laptops", quantity: 1 },
   8: {category: "sunglasses", quantity: 2 },
 }

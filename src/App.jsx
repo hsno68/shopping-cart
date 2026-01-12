@@ -11,7 +11,7 @@ export default function App() {
   const [products, setProducts] = useState({});
   const [filters, setFilters] = useState({ mainCategories: [], subCategories: {} });
 
-  const [cartItems, setCartItems] = useState({});
+  const [cart, setCart] = useState({});
 
   function toggleMainCategoryFilter({ mainCategory }) {
     setFilters((prevFilters) => {
@@ -70,7 +70,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Nav cart={cartItems} />
+      <Nav cart={cart} />
       <Outlet
         context={{
           carouselImages,
@@ -83,8 +83,8 @@ export default function App() {
           setCategories,
           products,
           setProducts,
-          cartItems,
-          setCartItems,
+          cart,
+          setCart,
           filters,
           setFilters,
           toggleMainCategoryFilter,
