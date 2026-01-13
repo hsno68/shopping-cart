@@ -18,5 +18,5 @@ export default function Nav({ cart }) {
 }
 
 function getCartItemsCount({ cart }) {
-  return Object.values(cart).reduce((total, current) => (total += current.quantity), 0);
+  return Object.values(cart).reduce((total, current) => (total += current), 0);
 }

@@ -4,18 +4,8 @@ import Review from "./Review/Review.jsx";
 import styles from "./Modal.module.css";
 
 export default function Modal({ product, closeModal }) {
-  const {
-    id,
-    title,
-    description,
-    price,
-    images,
-    rating,
-    reviews,
-    availabilityStatus,
-    category,
-    sku,
-  } = product;
+  const { id, title, description, price, images, rating, reviews, availabilityStatus, sku } =
+    product;
 
   const [currentImage, setCurrentImage] = useState(images[0]);
   const [quantity, setQuantity] = useState(1);
@@ -27,13 +17,13 @@ export default function Modal({ product, closeModal }) {
       if (!Object.hasOwn(prevCart, id)) {
         return {
           ...prevCart,
-          [id]: { category, quantity },
+          [id]: quantity,
         };
       }
 
       return {
         ...prevCart,
-        [id]: { ...prevCart[id], quantity: prevCart[id].quantity + quantity },
+        [id]: prevCart[id] + quantity,
       };
     });
 
@@ -133,10 +123,11 @@ export default function Modal({ product, closeModal }) {
 /* Example cart structure
 
 cart = {
-  1: {category: "laptops", quantity: 1 },
-  8: {category: "sunglasses", quantity: 2 },
+  1: 1,
+  8: 2,
+  9: 1
 }
 
-[id]: { category, quantity }
+[id]: quantity
 
 */
