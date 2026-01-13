@@ -112,6 +112,7 @@ export default function Modal({ product, closeModal }) {
             type="number"
             min={1}
             value={quantity}
+            className={styles.input}
             onChange={(e) => setQuantity(Number(e.target.value))}
           />
           <button type="button" onClick={addToCart}>

@@ -111,18 +111,23 @@ export default function Products() {
       ? subCategories.flatMap((subCategory) => Object.values(products[subCategory] || {}))
       : searchProducts;
 
-    const normalizeSearch = searchValue.trim().toLowerCase();
+    const search = searchValue.trim().toLowerCase();
+
+    if (search && subCategories.length) {
+      productsList = productsList.filter((product) => {
+        const fields = [
+          product.title,
+          product.description,
+          product.brand,
+          ...(product.tags ?? []),
+        ].map((field) => field.toLowerCase());
+
+        return fields.some((field) => field.includes(search));
+      });
+    }
 
     if (sortValue) {
       productsList = sortProducts(productsList);
-    }
-
-    if (normalizeSearch && subCategories.length) {
-      return productsList.filter((product) => {
-        const title = product.title.toLowerCase();
-        const tags = product.tags.map((tag) => tag.toLowerCase());
-        return title.includes(normalizeSearch) || tags.some((tag) => tag.includes(normalizeSearch));
-      });
     }
 
     return productsList;
