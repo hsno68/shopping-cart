@@ -1,0 +1,16 @@
+.container {
+  min-height: 200px;
+  grid-row: 2;
+  border: 1px solid var(--color-primary);
+  border-radius: 12px;
+}
+
+.container.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.subtotal {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: right;
+}

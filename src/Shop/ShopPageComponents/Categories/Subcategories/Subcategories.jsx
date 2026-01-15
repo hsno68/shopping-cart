@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router-dom";
-import styles from "./Subcategories.module.css";
 import { formatCategory } from "../../../../utilities.js";
+import styles from "./Subcategories.module.css";
 
 export default function Subcategories({ mainCategory, items }) {
   const { filters, toggleSubcategoryFilter } = useOutletContext();

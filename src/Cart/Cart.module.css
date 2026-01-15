@@ -1,0 +1,8 @@
+.gridContainer {
+  margin: 0 auto;
+  width: clamp(520px, 90vw, 1600px);
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  grid-template-rows: auto 1fr;
+  container-type: inline-size;
+}

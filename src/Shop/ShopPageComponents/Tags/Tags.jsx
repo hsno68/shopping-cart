@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router-dom";
-import styles from "./Tags.module.css";
 import { formatCategory } from "../../../utilities.js";
+import styles from "./Tags.module.css";
 
 export default function Tags() {
   const { filters, toggleSubcategoryFilter } = useOutletContext();

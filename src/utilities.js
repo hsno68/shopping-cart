@@ -11,6 +11,15 @@ export function formatCategory(category) {
     .join(" ");
 }
 
+export function getSubtotal(cart, products) {
+  return Object.entries(cart).reduce((accumulator, [id, quantity]) => {
+    const product = products[id];
+    const { price } = product;
+
+    return accumulator + price * quantity;
+  }, 0);
+}
+
 export function formatDate(date) {
   if (!date) return "N/A";
 

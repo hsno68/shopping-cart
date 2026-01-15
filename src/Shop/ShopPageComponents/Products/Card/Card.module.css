@@ -2,12 +2,15 @@
   min-width: 0;
   padding: 0.5rem;
   display: grid;
+  justify-items: center;
   gap: 0.5rem;
   border: 1px solid var(--color-primary);
   border-radius: 8px;
 }
 
 .imageWrapper {
+  width: clamp(140px, 75%, 160px);
+  height: clamp(140px, 75%, 160px);
   aspect-ratio: 1 / 1;
 }
 
